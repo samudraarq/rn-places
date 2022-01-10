@@ -1,4 +1,4 @@
-import { Platform } from "react-native";
+import { Platform, StyleSheet, Text, TouchableOpacity } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 

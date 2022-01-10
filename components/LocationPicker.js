@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -12,9 +12,15 @@ import * as Location from "expo-location";
 import Colors from "../constants/Colors";
 import MapPreview from "./MapPreview";
 
-const LocationPicker = (props) => {
+const LocationPicker = ({ navigation, route }) => {
   const [pickedLocation, setPickedLocation] = useState();
   const [isFetching, setIsFetching] = useState(false);
+
+  useEffect(() => {
+    if (route.params?.mapPickedLocation) {
+      setPickedLocation(route.params.mapPickedLocation);
+    }
+  }, [route.params?.mapPickedLocation]);
 
   const getLocationHandler = async () => {
     const status = await Location.requestForegroundPermissionsAsync();
@@ -44,7 +50,7 @@ const LocationPicker = (props) => {
   };
 
   const pickOnMapHandler = () => {
-    props.navigation.navigate("Map");
+    navigation.navigate("Map");
   };
 
   return (
