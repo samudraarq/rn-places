@@ -12,13 +12,17 @@ import * as Location from "expo-location";
 import Colors from "../constants/Colors";
 import MapPreview from "./MapPreview";
 
-const LocationPicker = ({ navigation, route }) => {
+const LocationPicker = ({ navigation, route, onLocationPicked }) => {
   const [pickedLocation, setPickedLocation] = useState();
   const [isFetching, setIsFetching] = useState(false);
 
   useEffect(() => {
     if (route.params?.mapPickedLocation) {
       setPickedLocation(route.params.mapPickedLocation);
+      onLocationPicked({
+        lat: route.params.mapPickedLocation.lat,
+        lng: route.params.mapPickedLocation.lng,
+      });
     }
   }, [route.params?.mapPickedLocation]);
 
@@ -36,6 +40,10 @@ const LocationPicker = ({ navigation, route }) => {
       setIsFetching(true);
       const location = await Location.getCurrentPositionAsync({});
       setPickedLocation({
+        lat: location.coords.latitude,
+        lng: location.coords.longitude,
+      });
+      onLocationPicked({
         lat: location.coords.latitude,
         lng: location.coords.longitude,
       });

@@ -1,6 +1,8 @@
-import React, { useCallback, useLayoutEffect, useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import MapView, { Marker } from "react-native-maps";
+
+import Colors from "../constants/Colors";
 
 const MapScreen = (props) => {
   const [selectedLocation, setSelectedLocation] = useState();
