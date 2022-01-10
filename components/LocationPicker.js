@@ -58,7 +58,10 @@ const LocationPicker = ({ navigation, route, onLocationPicked }) => {
   };
 
   const pickOnMapHandler = () => {
-    navigation.navigate("Map");
+    navigation.navigate("Map", {
+      readonly: false,
+      initialLocation: null,
+    });
   };
 
   return (
