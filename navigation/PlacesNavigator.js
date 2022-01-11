@@ -30,7 +30,7 @@ const PlacesNavigator = () => {
           headerRight: () => (
             <HeaderButtons HeaderButtonComponent={HeaderButton}>
               <Item
-                title="Add Place"
+                title="Add New Place"
                 iconName={Platform.OS === "android" ? "md-add" : "ios-add"}
                 onPress={() => {
                   navigation.navigate("NewPlace");
